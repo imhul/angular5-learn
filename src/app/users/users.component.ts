@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { UserService } from '../services/user/user.service';
+import { Router, ActivatedRoute } from '@angular/router';
 
 @Component({
   selector: 'app-users',
@@ -12,7 +13,14 @@ export class UsersComponent implements OnInit {
   public users;
   public selectedUser;
 
-  constructor(private _userService: UserService /* инстанс сервиса */) {}
+  constructor(
+    private _userService: UserService /* инстанс сервиса */, 
+    private route: ActivatedRoute,
+    private _router: Router
+    ) {
+      this.route.queryParams.subscribe(params => console.info("UsersComponent params: ", params));
+      this.route.data.subscribe(params => console.info("UserComponent data params: ", params))
+    }
 
   ngOnInit() {
     this.users = this._userService.getAll()
@@ -38,5 +46,12 @@ export class UsersComponent implements OnInit {
     };
     this._userService.addNew(name);
     this.users = this._userService.getAll()
+  }
+
+  goToUser(id: any) {
+    // this._router.navigate(['users', id, { skipLocationChange: true }]);
+    // or
+    this._router.navigateByUrl(`users/${id}`).
+      then(() => console.info("then() is working!"));
   }
 }

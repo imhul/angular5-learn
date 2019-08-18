@@ -1,3 +1,17 @@
+ul, .center {
+    width: 50%;
+    margin: 0 auto 25px auto;
+}
+
+.list-el {
+    list-style-type: none;
+    border: 1px solid rgb(213, 213, 213);
+    border-radius: 4px;
+    padding: 0 25px;
+    display: inline-block;
+    margin-bottom: 15px;
+}
+
 .list-el > * {
     display: inline-block;
 }

@@ -9,13 +9,26 @@ import { HeaderComponent } from './header/header.component';
 import { HomeComponent } from './home/home.component';
 import { UsersComponent } from './users/users.component';
 import { UserCardComponent } from './users/user-card/user-card.component';
+import { UserComponent } from './users/user/user.component';
 import { UserService } from './services/user/user.service';
 import { UserMiddleware } from './services/middleware/user-middleware.service';
+import { ProfileComponent } from './users/profile/profile.component';
+import { SettingsComponent } from './users/settings/settings.component';
 
 // Routes
 const routes = [
   {path: '', component: HomeComponent},
-  {path: 'users', component: UsersComponent},
+  {
+    path: 'users', 
+    data: {
+      title: 'Users'
+    },
+    component: UsersComponent
+  },
+  {path: 'users/:userId', component: UserComponent, children: [
+    {path: 'profile', component: ProfileComponent},
+    {path: 'settings', component: SettingsComponent},
+  ]},
 ];
 
 // Module
@@ -26,6 +39,9 @@ const routes = [
     HeaderComponent,
     UsersComponent,
     UserCardComponent,
+    UserComponent,
+    ProfileComponent,
+    SettingsComponent,
   ],
   imports: [
     BrowserModule,

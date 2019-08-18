@@ -1,17 +1,24 @@
-<input type="text" #userNameElement>
-<button 
-    (click)="addUser(userNameElement.value); userNameElement.value = ''">
-    add new user
-</button>
-<button (click)="isShown = !isShown">toggle</button>
-<span> </span>
-<input type="checkbox" #userListChoise (click)="userListChoise.checked ? getFromServer() : getStaticList()">
-<span> {{ userListChoise.checked ? "list from server loaded" : "static list loaded" }} </span>
-<span>{{selectedUser ? "Selected user is" : ""}} {{selectedUser?.name}}</span>
+<div class="center">
+    <input type="text" #userNameElement>
+    <button 
+        (click)="addUser(userNameElement.value); userNameElement.value = ''">
+        add new user
+    </button>
+    <button (click)="isShown = !isShown">show tools</button>
+    <span> </span>
+    <input type="checkbox" #userListChoise (click)="userListChoise.checked ? getFromServer() : getStaticList()">
+    <span> {{ userListChoise.checked ? "list from server loaded" : "static list loaded" }} </span>
+    <span>{{selectedUser ? "Selected user is" : ""}} {{selectedUser?.name}}</span>
+</div>
 
 <ul>
     <li *ngFor="let user of users" class="list-el">
-        <app-user-card *ngIf="isShown" [user]="user" (userSelect)="selectedUser = user"></app-user-card>
-        <span (click)="removeUser(user.name)">delete</span>
+        <app-user-card [user]="user" (userSelect)="selectedUser = user"></app-user-card>
+        <span *ngIf="isShown">
+            <span> | </span>
+            <span (click)="removeUser(user.name)">delete</span>
+            <span> | </span>
+            <span (click)="goToUser(user.id)">details</span>
+        </span>
     </li>
 </ul>
