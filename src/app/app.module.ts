@@ -7,6 +7,7 @@ import { HTTP_INTERCEPTORS, HttpClientModule } from '@angular/common/http';
 // Components
 import { AppComponent } from './app.component';
 import { HeaderComponent } from './header/header.component';
+import { MenuComponent } from './header/menu/menu.component';
 import { HomeComponent } from './home/home.component';
 import { UsersComponent } from './users/users.component';
 import { UserCardComponent } from './users/user-card/user-card.component';
@@ -14,6 +15,7 @@ import { UserComponent } from './users/user/user.component';
 import { ProfileComponent } from './users/profile/profile.component';
 import { SettingsComponent } from './users/settings/settings.component';
 import { LoginComponent } from './users/login/login.component';
+import { AdminComponent } from './admin/admin.component';
 
 // Services
 import { AuthGuard } from './services/auth/auth.guard';
@@ -24,6 +26,11 @@ import { UserMiddleware } from './services/middleware/user-middleware.service';
 // Routes
 const routes = [
   {path: '', component: HomeComponent},
+  {
+    path: 'admin', 
+    component: AdminComponent,
+    loadChildren: './admin/admin.module#AdminComponent',
+  },
   {
     path: 'login', 
     component: LoginComponent, 
@@ -59,6 +66,8 @@ const routes = [
     ProfileComponent,
     SettingsComponent,
     LoginComponent,
+    MenuComponent,
+    AdminComponent,
   ],
   imports: [
     BrowserModule,

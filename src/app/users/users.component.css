@@ -1,4 +1,9 @@
-ul, .center {
+ul {
+    width: 500px;
+    margin: 0 auto 25px auto;
+}
+
+.center {
     width: 50%;
     margin: 0 auto 25px auto;
 }
@@ -19,6 +24,7 @@ ul, .center {
 .list-el > span {
     margin-left: 10px;
     cursor: pointer;
+    font-family: sans-serif;
 }
 
 .list-el > span:hover {
