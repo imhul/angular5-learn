@@ -1,3 +1,4 @@
+// Core
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { RouterModule } from '@angular/router';
@@ -10,16 +11,21 @@ import { HomeComponent } from './home/home.component';
 import { UsersComponent } from './users/users.component';
 import { UserCardComponent } from './users/user-card/user-card.component';
 import { UserComponent } from './users/user/user.component';
-import { UserService } from './services/user/user.service';
-import { UserMiddleware } from './services/middleware/user-middleware.service';
 import { ProfileComponent } from './users/profile/profile.component';
 import { SettingsComponent } from './users/settings/settings.component';
+
+// Services
+import { AuthGuard } from './services/auth/auth.guard';
+import { AuthService } from './services/auth/auth.service';
+import { UserService } from './services/user/user.service';
+import { UserMiddleware } from './services/middleware/user-middleware.service';
 
 // Routes
 const routes = [
   {path: '', component: HomeComponent},
   {
     path: 'users', 
+    canActivate: [AuthGuard],
     data: {
       title: 'Users'
     },
@@ -55,9 +61,12 @@ const routes = [
       multi: true,
     },
     UserService,
+    AuthGuard,
+    AuthService,
   ],
   bootstrap: [
     AppComponent,
   ]
 })
+
 export class AppModule { }

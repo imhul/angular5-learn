@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { UserService } from '../services/user/user.service';
-import { Router, ActivatedRoute } from '@angular/router';
+import { Router, ActivatedRoute, Event, NavigationStart } from '@angular/router';
 
 @Component({
   selector: 'app-users',
@@ -14,12 +14,18 @@ export class UsersComponent implements OnInit {
   public selectedUser;
 
   constructor(
-    private _userService: UserService /* инстанс сервиса */, 
-    private route: ActivatedRoute,
+    private _userService: UserService, 
+    private _route: ActivatedRoute,
     private _router: Router
     ) {
-      this.route.queryParams.subscribe(params => console.info("UsersComponent params: ", params));
-      this.route.data.subscribe(params => console.info("UserComponent data params: ", params))
+      this._route.queryParams.subscribe() // (params => console.info("UsersComponent params: ", params));
+      this._route.data.subscribe() // (params => console.info("UserComponent data params: ", params))
+  
+      this._router.events.subscribe((e: Event) => {
+        if(e instanceof NavigationStart) {
+          console.info("_router event: ", e);
+        }
+      })
     }
 
   ngOnInit() {
