@@ -1,8 +1,10 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
+import { HTTP_INTERCEPTORS, HttpClientModule } from '@angular/common/http';
 
 import { AppComponent } from './app.component';
 import { UserService } from './services/user/user.service';
+import { UserMiddleware } from './services/middleware/user-middleware.service';
 import { UserCardComponent } from './header/user-card/user-card.component';
 import { HeaderComponent } from './header/header.component';
 
@@ -13,9 +15,19 @@ import { HeaderComponent } from './header/header.component';
     HeaderComponent,
   ],
   imports: [
-    BrowserModule
+    BrowserModule,
+    HttpClientModule, 
   ],
-  providers: [UserService],
-  bootstrap: [AppComponent]
+  providers: [
+    {
+      provide: HTTP_INTERCEPTORS,
+      useClass: UserMiddleware,
+      multi: true,
+    },
+    UserService,
+  ],
+  bootstrap: [
+    AppComponent,
+  ]
 })
 export class AppModule { }

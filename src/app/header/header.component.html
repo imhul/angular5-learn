@@ -1,14 +1,28 @@
+<ng-content></ng-content>
+
 <p (click)="changeColor(blue)" [style.color]="class">{{ x }}</p>
 
 <input type="text" #colorElement>
 
 <button (click)="changeColor(colorElement.value)">change color</button>
+<br><br>
 <button (click)="isShown = !isShown">toggle</button>
-<br>
+<br><br>
+<input type="text" #userNameElement>
+<button 
+    (click)="addUser(userNameElement.value); userNameElement.value = ''">
+    add new user
+</button>
+<br><br>
+<input type="checkbox" #userListChoise (click)="userListChoise.checked ? getFromServer() : getStaticList()">
+<span> {{ userListChoise.checked ? "from server" : "static list" }} </span>
+
+
 
 <ul>
     <li *ngFor="let user of users">
         <app-user-card *ngIf="isShown" [user]="user" (userSelect)="selectedUser = user"></app-user-card>
+        <span (click)="removeUser(user.name)">x</span>
     </li>
 </ul> 
 

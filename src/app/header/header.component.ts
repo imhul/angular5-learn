@@ -14,25 +14,38 @@ export class HeaderComponent implements OnInit {
   public users;
   public isShown = true;
   public selectedUser;
-  private _userService;
+  // private _userService; // инстанс сервиса  
 
-  constructor(userService: UserService) {
-
-    this._userService = userService;
-    // setTimeout(() => {
-    //   this.classRed = 'green';
-    //   setTimeout(() => {
-    //     this.classRed = 'blue';
-    //   }, 2000)
-    // }, 2000)
-  }
+  constructor(private _userService: UserService) {}
 
   ngOnInit() {
     this.users = this._userService.getAll()
   }
 
-  changeColor(color) {
+  getFromServer() {
+    this._userService.getAllFromServer().subscribe(users => this.users = users)
+  }
+
+  getStaticList() {
+    this.users = this._userService.getAll()
+  }
+
+  changeColor(color: string) {
     this.class = color
+  }
+
+  removeUser(name: string) {
+    this._userService.deleteUser(name);
+    this.users = this._userService.getAll()
+  }
+
+  addUser(name: string) {
+    if(!name) {
+      console.warn("Name is empty!");
+      return
+    };
+    this._userService.addNew(name);
+    this.users = this._userService.getAll()
   }
 
 }
