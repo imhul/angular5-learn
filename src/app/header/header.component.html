@@ -1,6 +1,12 @@
 <ng-content></ng-content>
 
 <a 
+    class="nav-link"
+    [routerLink]="[{ outlets: { popup: 'login' } }]">
+    Login
+</a>
+
+<a 
     class="nav-link" 
     routerLink="" 
     routerLinkActive="active"

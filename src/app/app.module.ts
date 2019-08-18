@@ -13,6 +13,7 @@ import { UserCardComponent } from './users/user-card/user-card.component';
 import { UserComponent } from './users/user/user.component';
 import { ProfileComponent } from './users/profile/profile.component';
 import { SettingsComponent } from './users/settings/settings.component';
+import { LoginComponent } from './users/login/login.component';
 
 // Services
 import { AuthGuard } from './services/auth/auth.guard';
@@ -24,17 +25,26 @@ import { UserMiddleware } from './services/middleware/user-middleware.service';
 const routes = [
   {path: '', component: HomeComponent},
   {
+    path: 'login', 
+    component: LoginComponent, 
+    outlet: "popup"
+  },
+  {
     path: 'users', 
+    component: UsersComponent,
     canActivate: [AuthGuard],
     data: {
       title: 'Users'
-    },
-    component: UsersComponent
+    }
   },
-  {path: 'users/:userId', component: UserComponent, children: [
-    {path: 'profile', component: ProfileComponent},
-    {path: 'settings', component: SettingsComponent},
-  ]},
+  {
+    path: 'users/:userId', 
+    component: UserComponent, 
+    children: [
+      {path: 'profile', component: ProfileComponent},
+      {path: 'settings', component: SettingsComponent},
+    ]
+  },
 ];
 
 // Module
@@ -48,6 +58,7 @@ const routes = [
     UserComponent,
     ProfileComponent,
     SettingsComponent,
+    LoginComponent,
   ],
   imports: [
     BrowserModule,
