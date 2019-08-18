@@ -7,7 +7,8 @@ import { HttpClient } from '@angular/common/http';
   styleUrls: ['./app.component.css']
 })
 export class AppComponent {
-  title = 'myapp';
+
+  public title = 'myapp';
 
   constructor(_http: HttpClient) {
     _http.get('https://jsonplaceholder.typicode.com/users')

@@ -1,0 +1,12 @@
+.list-el > * {
+    display: inline-block;
+}
+
+.list-el > span {
+    margin-left: 10px;
+    cursor: pointer;
+}
+
+.list-el > span:hover {
+    color: red;
+}

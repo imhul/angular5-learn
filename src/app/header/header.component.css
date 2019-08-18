@@ -1,11 +1,12 @@
-.red {
+.nav-link {
+    color: blueviolet;
+    display: block;
+}
+
+.nav-link:hover {
     color: red;
 }
 
-.blue {
-    color: blue;
-}
-
-.green {
-    color: green;
+.nav-link.active {
+    color: olivedrab;
 }

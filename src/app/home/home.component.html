@@ -1,0 +1,6 @@
+<p (click)="changeColor(blue)" [style.color]="class">{{ x }}</p>
+
+<input type="text" #colorElement>
+
+<button (click)="changeColor(colorElement.value)">change color</button>
+
