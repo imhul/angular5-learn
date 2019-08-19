@@ -1,5 +1,24 @@
 <nav class="menu">
     <a 
+        class="nav-link" 
+        routerLink="" 
+        routerLinkActive="active"
+        [routerLinkActiveOptions]="{exact: true}">
+        home
+    </a>
+    <a 
+        class="nav-link" 
+        routerLink="admin" 
+        routerLinkActive="active">
+        admin
+    </a>
+    <a 
+        class="nav-link" 
+        routerLink="users" 
+        routerLinkActive="active">
+        users
+    </a>
+    <a 
         class="nav-link"
         [routerLink]="[{ outlets: { popup: 'login' } }]">
         login
@@ -9,17 +28,5 @@
         [routerLink]="[{ outlets: { popup: null } }]">
         close login
     </a>
-    <a 
-        class="nav-link" 
-        routerLink="" 
-        routerLinkActive="active"
-        [routerLinkActiveOptions]="{exact: true}">
-        home
-    </a>
-    <a 
-        class="nav-link" 
-        routerLink="users" 
-        routerLinkActive="active">
-        users
-    </a>
+    
 </nav>

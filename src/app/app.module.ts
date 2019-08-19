@@ -1,8 +1,12 @@
 // Core
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
-import { RouterModule } from '@angular/router';
+import { FormsModule } from '@angular/forms';
+import { RouterModule, Routes } from '@angular/router';
 import { HTTP_INTERCEPTORS, HttpClientModule } from '@angular/common/http';
+
+// Preloading Strategy
+import { CustomPreloadingStrategy } from './custom-preloading-strategy';
 
 // Components
 import { AppComponent } from './app.component';
@@ -15,21 +19,22 @@ import { UserComponent } from './users/user/user.component';
 import { ProfileComponent } from './users/profile/profile.component';
 import { SettingsComponent } from './users/settings/settings.component';
 import { LoginComponent } from './users/login/login.component';
-import { AdminComponent } from './admin/admin.component';
+import { AdminModule } from './admin/admin.module';
 
 // Services
 import { AuthGuard } from './services/auth/auth.guard';
 import { AuthService } from './services/auth/auth.service';
 import { UserService } from './services/user/user.service';
 import { UserMiddleware } from './services/middleware/user-middleware.service';
+import { FormComponent } from './users/login/form/form.component';
 
 // Routes
-const routes = [
+const routes: Routes = [
   {path: '', component: HomeComponent},
   {
     path: 'admin', 
-    component: AdminComponent,
-    loadChildren: './admin/admin.module#AdminComponent',
+    loadChildren: './admin/admin.module#AdminModule',
+    data: { preload: true, delay: true },
   },
   {
     path: 'login', 
@@ -67,12 +72,19 @@ const routes = [
     SettingsComponent,
     LoginComponent,
     MenuComponent,
-    AdminComponent,
+    FormComponent,
   ],
   imports: [
     BrowserModule,
     HttpClientModule, 
-    RouterModule.forRoot(routes/*, {useHash: true} */),
+    RouterModule.forRoot(
+      routes,
+      {
+        preloadingStrategy: CustomPreloadingStrategy,
+        /* useHash: true */ 
+      },
+    ),
+    FormsModule,
   ],
   providers: [
     {
@@ -83,6 +95,7 @@ const routes = [
     UserService,
     AuthGuard,
     AuthService,
+    CustomPreloadingStrategy,
   ],
   bootstrap: [
     AppComponent,
