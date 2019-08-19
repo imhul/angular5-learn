@@ -1,12 +1,15 @@
 // Core
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
-import { FormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { RouterModule, Routes } from '@angular/router';
 import { HTTP_INTERCEPTORS, HttpClientModule } from '@angular/common/http';
 
-// Preloading Strategy
+// Preloading Strategies
 import { CustomPreloadingStrategy } from './custom-preloading-strategy';
+
+// Modules
+import { AdminModule } from './admin/admin.module';
 
 // Components
 import { AppComponent } from './app.component';
@@ -19,7 +22,6 @@ import { UserComponent } from './users/user/user.component';
 import { ProfileComponent } from './users/profile/profile.component';
 import { SettingsComponent } from './users/settings/settings.component';
 import { LoginComponent } from './users/login/login.component';
-import { AdminModule } from './admin/admin.module';
 
 // Services
 import { AuthGuard } from './services/auth/auth.guard';
@@ -59,7 +61,7 @@ const routes: Routes = [
   },
 ];
 
-// Module
+// Main module
 @NgModule({
   declarations: [
     AppComponent,
@@ -85,6 +87,7 @@ const routes: Routes = [
       },
     ),
     FormsModule,
+    ReactiveFormsModule,
   ],
   providers: [
     {

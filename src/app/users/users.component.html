@@ -5,7 +5,7 @@
         add new user
     </button>
     <button (click)="isShown = !isShown">show tools</button>
-    <span> </span>
+    <p></p>
     <input type="checkbox" #userListChoise (click)="userListChoise.checked ? getFromServer() : getStaticList()">
     <span> {{ userListChoise.checked ? "list from server loaded" : "static list loaded" }} </span>
     <span>{{selectedUser ? "Selected user is" : ""}} {{selectedUser?.name}}</span>

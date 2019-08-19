@@ -1,1 +1,9 @@
-<p>form works!</p>
+<h2 class="title">Hello{{name ? ', ' : ''}}{{name}}!</h2>
+
+<small>Name status: {{ nameStatus }}{{nameStatus === 'INVALID' ? (' with error: ' + nameError) : '' }}</small>
+<input type="text" [formControl]="nameControl" #userNameElement>
+
+<small>Pass status: {{ passStatus }}</small>
+<input type="password" [formControl]="passControl" #userPassElement>
+
+<input type="submit">

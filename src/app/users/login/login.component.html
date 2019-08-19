@@ -1,9 +1,12 @@
 <div class="back">
     <div class="popup-container">
-        <h1>Login</h1>
-        <a 
-            [routerLink]="[{ outlets: { popup: null } }]">
-            Close
-        </a>
+        <div class="close">
+            <!-- TODO: How to close popup from popup by routerLink?
+            <a [routerLink]="[{ outlets: { popup: null } }]" title="Why not working!?">
+                X
+            </a> -->
+            <span (click)="close()">X</span>
+        </div>
+        <app-form></app-form>
     </div>
 </div>
