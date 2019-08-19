@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { FormControl, Validators, ValidationErrors } from '@angular/forms';
 
 
-import { FormValidators } from './validators';
+import { FormValidators } from './form.validators';
 
 @Component({
   selector: 'app-form',
