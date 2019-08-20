@@ -22,4 +22,5 @@ nav.menu .nav-link:hover {
 nav.menu .nav-link.active {
     color: #fff;
     background-color: gray;
+    border: 1px solid #fff;
 }

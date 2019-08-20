@@ -29,6 +29,7 @@ import { AuthService } from './services/auth/auth.service';
 import { UserService } from './services/user/user.service';
 import { UserMiddleware } from './services/middleware/user-middleware.service';
 import { FormComponent } from './users/login/form/form.component';
+import { FormArrayComponent } from './users/form-array/form-array.component';
 
 // Routes
 const routes: Routes = [
@@ -59,6 +60,10 @@ const routes: Routes = [
       {path: 'settings', component: SettingsComponent},
     ]
   },
+  {
+    path: 'formarray',
+    component: FormArrayComponent,
+  },
 ];
 
 // Main module
@@ -75,6 +80,7 @@ const routes: Routes = [
     LoginComponent,
     MenuComponent,
     FormComponent,
+    FormArrayComponent,
   ],
   imports: [
     BrowserModule,

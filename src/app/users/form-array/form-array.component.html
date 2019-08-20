@@ -1,0 +1,9 @@
+<form [formGroup]="userListControl">
+    <ul formArrayName="users">
+        <li *ngFor="let userControl of userListControl.controls.users.controls; let i = index">
+            <input type="text" formControlName="{{i}}">
+            <button (click)="removeUserControl(i)">remove</button>
+        </li>
+    </ul>
+    <button (click)="addUserControl()" class="bottom">add user</button>
+</form>

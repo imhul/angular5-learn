@@ -1,8 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators, ValidationErrors } from '@angular/forms';
-
-
 import { FormValidators } from './form.validators';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-form',
@@ -19,10 +18,10 @@ export class FormComponent implements OnInit {
   public passStatus: string;
   public isValid: boolean = false;
   public isSubmitted: boolean = false;
-  public payLoad: string = '';
+  public payLoad: string;
   public submitObj: {} = {};
 
-  constructor() { }
+  constructor(private _router: Router) { }
 
   ngOnInit() {
 
@@ -61,12 +60,22 @@ export class FormComponent implements OnInit {
     return this.isValid = FormValidators.preSubmitValidator(this.FormGroupStatus, this.passStatus)
   }
 
+  submit(data: {}) {
+    this.payLoad = JSON.stringify(data);
+    console.info("submit payLoad: ", this.payLoad);
+    this.isSubmitted = true;
+  }
+
   onSubmit() {
     this.submitObj = {
       pass: this.passControl.value,
       name: this.fullNameControl.value,
-    }
-    this.payLoad = JSON.stringify(this.submitObj);
-    console.info("submit payLoad: ", this.payLoad);
+    };
+    this.submit(this.submitObj);
+    if(this.isSubmitted) this._router.navigate([
+      ".", 
+      { outlets: { popup: null } }
+    ]);
+    
   }
 }
