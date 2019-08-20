@@ -9,6 +9,7 @@ import { FormControl, FormGroup, FormArray } from '@angular/forms';
 export class FormArrayComponent implements OnInit {
 
   public userListControl: FormGroup;
+  public customControl: FormControl;
 
   constructor() { }
 
@@ -22,9 +23,9 @@ export class FormArrayComponent implements OnInit {
       ])
     });
     this.userListControl.valueChanges.subscribe(val => {
-      // this.name = val.firstName
       console.info("userListControl.valueChanges: val: ", val)
     });
+    this.customControl = new FormControl();
   }
 
   removeUserControl(index: any) {

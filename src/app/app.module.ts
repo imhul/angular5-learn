@@ -22,15 +22,16 @@ import { UserComponent } from './users/user/user.component';
 import { ProfileComponent } from './users/profile/profile.component';
 import { SettingsComponent } from './users/settings/settings.component';
 import { LoginComponent } from './users/login/login.component';
+import { FormComponent } from './users/login/form/form.component';
+import { FormArrayComponent } from './users/form-array/form-array.component';
+import { FormBuilderComponent } from './users/form-builder/form-builder.component';
+import { CustomControlComponent } from './users/custom-control/custom-control.component';
 
 // Services
 import { AuthGuard } from './services/auth/auth.guard';
 import { AuthService } from './services/auth/auth.service';
 import { UserService } from './services/user/user.service';
 import { UserMiddleware } from './services/middleware/user-middleware.service';
-import { FormComponent } from './users/login/form/form.component';
-import { FormArrayComponent } from './users/form-array/form-array.component';
-import { FormBuilderComponent } from './users/form-builder/form-builder.component';
 
 // Routes
 const routes: Routes = [
@@ -62,12 +63,16 @@ const routes: Routes = [
     ]
   },
   {
-    path: 'formarray',
+    path: 'form-array',
     component: FormArrayComponent,
   },
   {
-    path: 'formbuilder',
+    path: 'form-builder',
     component: FormBuilderComponent,
+  },
+  {
+    path: 'custom-control',
+    component: CustomControlComponent,
   },
 ];
 
@@ -87,6 +92,7 @@ const routes: Routes = [
     FormComponent,
     FormArrayComponent,
     FormBuilderComponent,
+    CustomControlComponent,
   ],
   imports: [
     BrowserModule,

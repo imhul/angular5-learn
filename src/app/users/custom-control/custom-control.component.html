@@ -1,0 +1,12 @@
+<div class="container" (click)="toggleDown()">
+    <div class="round"></div>
+    <div class="round"></div>
+    <div class="round"></div>
+    <div 
+        class="ui" 
+        *ngFor="let c for ['red', 'yellow', 'green']" 
+        (click)="switchColor(c); $event.stopPropagation()"
+        ngClass="currentColor === c ? c : ''">
+
+    </div>
+</div>
