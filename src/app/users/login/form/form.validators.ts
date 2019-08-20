@@ -17,11 +17,15 @@ export class FormValidators {
   
   // Custom Async Validator
   static LengthAsyncValidator(formControl: FormControl): Observable<null|any> {
-    if( formControl.value.length < 3 ) {
+    if( formControl.value.length < 5 ) {
       return of({
         message: 'Name length too short!'
       })
     }
     return of(null)
+  }
+
+  static preSubmitValidator(FormGroupStatus: string, passStatus: string): boolean {
+    return ((FormGroupStatus === 'INVALID') || (passStatus === 'INVALID')) ? false : true
   }
 }

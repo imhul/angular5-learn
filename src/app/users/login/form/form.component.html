@@ -1,9 +1,12 @@
 <h2 class="title">Hello{{name ? ', ' : ''}}{{name}}!</h2>
+<form (ngSubmit)="onSubmit()">
+    <fieldset [formGroup]="fullNameControl">
+        <small>FormGroup Status: {{ FormGroupStatus }}</small>
+        <input type="text" formControlName="firstName">
+        <input type="text" formControlName="lastName">
+    </fieldset>
+    <small>Pass status: {{ passStatus }}</small>
+    <input type="password" [formControl]="passControl" #userPassElement>
 
-<small>Name status: {{ nameStatus }}{{nameStatus === 'INVALID' ? (' with error: ' + nameError) : '' }}</small>
-<input type="text" [formControl]="nameControl" #userNameElement>
-
-<small>Pass status: {{ passStatus }}</small>
-<input type="password" [formControl]="passControl" #userPassElement>
-
-<input type="submit">
+    <input type="submit" [disabled]="!isValid">
+</form>
