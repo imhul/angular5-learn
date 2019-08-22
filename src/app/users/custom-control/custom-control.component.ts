@@ -17,8 +17,8 @@ export class CustomControlComponent implements ControlValueAccessor {
 
     private _currentColor: cColor;
     private _colors: cColor[] = ['red', 'yellow', 'green'];
-    public propagateChange = () => {};
-    public propagateTouch = () => {};
+    public propagateChange = (color: cColor) => {};
+    public propagateTouch = (color: cColor) => {};
 
     writeValue(color: cColor): void {
       this.currentColor = color
@@ -30,8 +30,8 @@ export class CustomControlComponent implements ControlValueAccessor {
 
     set currentColor(color: cColor) {
       this._currentColor = color;
-      this.propagateChange();
-      this.propagateTouch();
+      this.propagateChange(color);
+      this.propagateTouch(color);
     };
 
     registerOnChange(fn: any): void {

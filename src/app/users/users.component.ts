@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { UserService } from '../services/user/user.service';
 import { Router, ActivatedRoute, Event, NavigationStart } from '@angular/router';
+import { FormControl } from '@angular/forms';
 
 @Component({
   selector: 'app-users',
@@ -12,6 +13,7 @@ export class UsersComponent implements OnInit {
   public isShown = true;
   public users;
   public selectedUser;
+  public customControl: FormControl;
 
   constructor(
     private _userService: UserService, 
@@ -29,7 +31,9 @@ export class UsersComponent implements OnInit {
     }
 
   ngOnInit() {
-    this.users = this._userService.getAll()
+    this.users = this._userService.getAll();
+
+    this.customControl = new FormControl();
   }
 
   getFromServer() {
