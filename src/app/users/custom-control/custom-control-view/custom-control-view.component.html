@@ -1,1 +1,9 @@
-<app-custom-control [formControl]="customControl"></app-custom-control>
+<app-custom-control [formControl]="customControl">
+
+    <div>
+        <h2 *ngIf="customControl.value === 'green'">Go!</h2>
+        <h2 *ngIf="customControl.value === 'yellow'">Ready?</h2>
+        <h2 *ngIf="customControl.value === 'red'">Stop!</h2>
+    </div>
+
+</app-custom-control>
