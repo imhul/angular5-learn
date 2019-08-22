@@ -26,6 +26,7 @@ import { FormComponent } from './users/login/form/form.component';
 import { FormArrayComponent } from './users/form-array/form-array.component';
 import { FormBuilderComponent } from './users/form-builder/form-builder.component';
 import { CustomControlComponent } from './users/custom-control/custom-control.component';
+import { CustomControlViewComponent } from './users/custom-control/custom-control-view/custom-control-view.component';
 
 // Services
 import { AuthGuard } from './services/auth/auth.guard';
@@ -72,7 +73,7 @@ const routes: Routes = [
   },
   {
     path: 'custom-control',
-    component: CustomControlComponent,
+    component: CustomControlViewComponent,
   },
 ];
 
@@ -93,6 +94,7 @@ const routes: Routes = [
     FormArrayComponent,
     FormBuilderComponent,
     CustomControlComponent,
+    CustomControlViewComponent,
   ],
   imports: [
     BrowserModule,
