@@ -27,12 +27,15 @@ import { FormArrayComponent } from './users/form-array/form-array.component';
 import { FormBuilderComponent } from './users/form-builder/form-builder.component';
 import { CustomControlComponent } from './users/custom-control/custom-control.component';
 import { CustomControlViewComponent } from './users/custom-control/custom-control-view/custom-control-view.component';
+import { RxjsComponent } from './rxjs/rxjs.component';
+import { RxjsIntroComponent } from './rxjs/rxjs-intro/rxjs-intro.component';
 
 // Services
 import { AuthGuard } from './services/auth/auth.guard';
 import { AuthService } from './services/auth/auth.service';
 import { UserService } from './services/user/user.service';
 import { UserMiddleware } from './services/middleware/user-middleware.service';
+import { RxjsService } from './services/rxjs/rxjs.service';
 
 // Routes
 const routes: Routes = [
@@ -75,6 +78,10 @@ const routes: Routes = [
     path: 'custom-control',
     component: CustomControlViewComponent,
   },
+  {
+    path: 'rxjs',
+    component: RxjsComponent,
+  },
 ];
 
 // Main module
@@ -95,6 +102,8 @@ const routes: Routes = [
     FormBuilderComponent,
     CustomControlComponent,
     CustomControlViewComponent,
+    RxjsComponent,
+    RxjsIntroComponent,
   ],
   imports: [
     BrowserModule,
@@ -119,6 +128,7 @@ const routes: Routes = [
     AuthGuard,
     AuthService,
     CustomPreloadingStrategy,
+    RxjsService,
   ],
   bootstrap: [
     AppComponent,
