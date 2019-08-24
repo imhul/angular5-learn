@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { range, timer, from } from 'rxjs';
+import { Observable, range, timer, from } from 'rxjs';
 import { 
   filter, 
   first, 
@@ -53,7 +53,7 @@ export class FiltersComponent implements OnInit {
   // **** а в ...While передаётся collback  ****//
   // *******************************************//
 
-  public observe = range(0, 100).pipe(takeWhile(num => num < 50)); // Работает как filter для первых элементов
+  public observe: Observable<any> = range(0, 100).pipe(takeWhile(num => num < 50)); // Работает как filter для первых элементов
 
   constructor() { }
 
