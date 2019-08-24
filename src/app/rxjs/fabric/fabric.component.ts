@@ -22,7 +22,7 @@ export class FabricComponent implements OnInit {
   public observeCreate = Observable.create((observer: Observer<string>) => {
     observer.next('Hello!');
     observer.next('Hello!');
-    observer.next('Hello!');
+    observer.next('Господи Исусе!');
     observer.complete()
   });
   public observeOf = of(6, 66, 666);
@@ -33,7 +33,7 @@ export class FabricComponent implements OnInit {
   public observeInterval = interval(1000);
   public observeRange = range(0, 10);
   public observeEmpty = empty();
-  public observeThrowError = throwError("Some error!");
+  public observeThrowError = throwError("Жесть!");
 
   constructor() { }
 
@@ -70,17 +70,17 @@ export class FabricComponent implements OnInit {
 
     // Timers
 
-    // this.observeTimer.subscribe({
-    //   next: (next: number) => console.info("timer: next: ", next),
-    //   complete: () => console.info("timer: Complete!"),
-    //   error: (error: any) => console.info("timer: error: ", error),
-    // });
+    this.observeTimer.subscribe({
+      next: (next: number) => console.info("timer: next: ", next),
+      complete: () => console.info("timer: Complete!"),
+      error: (error: any) => console.info("timer: error: ", error),
+    });
 
-    // this.observeInterval.subscribe({
-    //   next: (next: number) => console.info("interval: next: ", next),
-    //   complete: () => console.info("interval: Complete!"),
-    //   error: (error: any) => console.info("interval: error: ", error),
-    // });
+    this.observeInterval.subscribe({
+      next: (next: number) => console.info("interval: next: ", next),
+      complete: () => console.info("interval: Complete!"),
+      error: (error: any) => console.info("interval: error: ", error),
+    });
 
     this.observeRange.subscribe({
       next: (next: number) => console.info("range: next: ", next),

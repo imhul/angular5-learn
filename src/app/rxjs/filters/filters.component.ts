@@ -59,9 +59,9 @@ export class FiltersComponent implements OnInit {
 
   ngOnInit() {
     this.observe.subscribe({
-      next: (next: number) => console.info("range: next: ", next),
-      complete: () => console.info("range: Complete!"),
-      error: (error: any) => console.info("range: error: ", error),
+      next: (next: number) => console.info("filters: next: ", next),
+      complete: () => console.info("filters: Complete!"),
+      error: (error: any) => console.info("filters: error: ", error),
     });
   }
 

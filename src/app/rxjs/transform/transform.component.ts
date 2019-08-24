@@ -8,9 +8,8 @@ import {
   switchMap, 
   exhaust, 
   exhaustMap,
-  concateMap,
 } from 'rxjs/operators';
-import { range, of, fromEvent, interval } from 'rxjs';
+import { Observable, range, of, fromEvent, interval } from 'rxjs';
 
 @Component({
   selector: 'app-transform',
@@ -30,16 +29,16 @@ export class TransformComponent implements OnInit {
   // public observe = this.clicks.pipe(flatMap(_ => interval(1000))); // flatMap === mergeMap, вмерживает параллельно
   // concateMap вмерживает как flatMap, но последовательно
   // public observe = this.clicks.pipe(switchMap(_ => interval(1000))); // Останавливает текущий таймер и запускает новый
-  public observe = this.clicks.pipe(exhaustMap(_ => interval(1000))); // Продолжает выполнять текущий таймер
+  public observe: Observable<any> = this.clicks.pipe(exhaustMap(_ => interval(1000))); // Продолжает выполнять текущий таймер
   
   
   constructor() { }
 
   ngOnInit() {
     this.observe.subscribe({
-      next: (next: any) => console.info("range: next: ", next),
-      complete: () => console.info("range: Complete!"),
-      error: (error: any) => console.info("range: error: ", error),
+      next: (next: any) => console.info("transform: next: ", next),
+      complete: () => console.info("transform: Complete!"),
+      error: (error: any) => console.info("transform: error: ", error),
     });
   }
 

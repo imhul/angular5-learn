@@ -32,9 +32,9 @@ export class UnionComponent implements OnInit {
     this.observe = this.timer4.pipe(race(this.timer5)); // выводит значения того таймера, который сработает быстрее
 
     this.observe.subscribe({
-      next: (next: number) => console.info("range: next: ", next),
-      complete: () => console.info("range: Complete!"),
-      error: (error: any) => console.info("range: error: ", error),
+      next: (next: number) => console.info("union: next: ", next),
+      complete: () => console.info("union: Complete!"),
+      error: (error: any) => console.info("union: error: ", error),
     });
   }
 
