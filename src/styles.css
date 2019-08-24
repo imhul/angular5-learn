@@ -1,4 +1,7 @@
 /* You can add global styles to this file, and also import other style files */
+html {
+    font-family: Verdana, Geneva, Tahoma, sans-serif !important;
+}
 button {
     display: block;
     border-radius: 4px;
@@ -48,4 +51,8 @@ ul {
 
 ul > li {
     list-style-type: none;
+}
+
+.center {
+    text-align: center !important;
 }

@@ -1,5 +1,16 @@
 import { Component, OnInit } from '@angular/core';
-import { Observable, Observer, of, from, fromEvent, timer, interval, range, empty, throwError } from 'rxjs';
+import { 
+  Observable, 
+  Observer, 
+  of, 
+  from, 
+  fromEvent, 
+  timer, 
+  interval, 
+  range, 
+  empty, 
+  throwError,
+} from 'rxjs';
 
 @Component({
   selector: 'app-fabric',
@@ -57,17 +68,19 @@ export class FabricComponent implements OnInit {
       error: (error: any) => console.info("fromEvent: error: ", error),
     });
 
-    this.observeTimer.subscribe({
-      next: (next: number) => console.info("timer: next: ", next),
-      complete: () => console.info("timer: Complete!"),
-      error: (error: any) => console.info("timer: error: ", error),
-    });
+    // Timers
 
-    this.observeInterval.subscribe({
-      next: (next: number) => console.info("interval: next: ", next),
-      complete: () => console.info("interval: Complete!"),
-      error: (error: any) => console.info("interval: error: ", error),
-    });
+    // this.observeTimer.subscribe({
+    //   next: (next: number) => console.info("timer: next: ", next),
+    //   complete: () => console.info("timer: Complete!"),
+    //   error: (error: any) => console.info("timer: error: ", error),
+    // });
+
+    // this.observeInterval.subscribe({
+    //   next: (next: number) => console.info("interval: next: ", next),
+    //   complete: () => console.info("interval: Complete!"),
+    //   error: (error: any) => console.info("interval: error: ", error),
+    // });
 
     this.observeRange.subscribe({
       next: (next: number) => console.info("range: next: ", next),

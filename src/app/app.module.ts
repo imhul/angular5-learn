@@ -30,6 +30,11 @@ import { CustomControlViewComponent } from './users/custom-control/custom-contro
 import { RxjsComponent } from './rxjs/rxjs.component';
 import { RxjsIntroComponent } from './rxjs/rxjs-intro/rxjs-intro.component';
 import { FabricComponent } from './rxjs/fabric/fabric.component';
+import { FiltersComponent } from './rxjs/filters/filters.component';
+import { UnionComponent } from './rxjs/union/union.component';
+import { TransformComponent } from './rxjs/transform/transform.component';
+import { ErrorsComponent } from './rxjs/errors/errors.component';
+import { UtilsComponent } from './rxjs/utils/utils.component';
 
 // Services
 import { AuthGuard } from './services/auth/auth.guard';
@@ -106,6 +111,11 @@ const routes: Routes = [
     RxjsComponent,
     RxjsIntroComponent,
     FabricComponent,
+    FiltersComponent,
+    UnionComponent,
+    TransformComponent,
+    ErrorsComponent,
+    UtilsComponent,
   ],
   imports: [
     BrowserModule,

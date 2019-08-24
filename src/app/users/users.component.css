@@ -1,5 +1,5 @@
 ul {
-    width: 500px;
+    width: 600px;
 }
 
 .center {
@@ -23,7 +23,6 @@ ul {
 .list-el > span {
     margin-left: 10px;
     cursor: pointer;
-    font-family: sans-serif;
 }
 
 .list-el > span:hover {
