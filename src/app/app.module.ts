@@ -29,6 +29,7 @@ import { CustomControlComponent } from './users/custom-control/custom-control.co
 import { CustomControlViewComponent } from './users/custom-control/custom-control-view/custom-control-view.component';
 import { RxjsComponent } from './rxjs/rxjs.component';
 import { RxjsIntroComponent } from './rxjs/rxjs-intro/rxjs-intro.component';
+import { FabricComponent } from './rxjs/fabric/fabric.component';
 
 // Services
 import { AuthGuard } from './services/auth/auth.guard';
@@ -104,6 +105,7 @@ const routes: Routes = [
     CustomControlViewComponent,
     RxjsComponent,
     RxjsIntroComponent,
+    FabricComponent,
   ],
   imports: [
     BrowserModule,
