@@ -4,6 +4,8 @@ import { NgModule } from '@angular/core';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { RouterModule, Routes } from '@angular/router';
 import { HTTP_INTERCEPTORS, HttpClientModule } from '@angular/common/http';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { MatSnackBarModule } from '@angular/material/snack-bar';
 
 // Preloading Strategies
 import { CustomPreloadingStrategy } from './custom-preloading-strategy';
@@ -35,6 +37,7 @@ import { UnionComponent } from './rxjs/union/union.component';
 import { TransformComponent } from './rxjs/transform/transform.component';
 import { ErrorsComponent } from './rxjs/errors/errors.component';
 import { UtilsComponent } from './rxjs/utils/utils.component';
+import { NotifyComponent } from './notify/notify.component';
 
 // Services
 import { AuthGuard } from './services/auth/auth.guard';
@@ -42,6 +45,7 @@ import { AuthService } from './services/auth/auth.service';
 import { UserService } from './services/user/user.service';
 import { UserMiddleware } from './services/middleware/user-middleware.service';
 import { RxjsService } from './services/rxjs/rxjs.service';
+import { NotifyService } from './services/notify/notify.service';
 
 // Routes
 const routes: Routes = [
@@ -116,10 +120,13 @@ const routes: Routes = [
     TransformComponent,
     ErrorsComponent,
     UtilsComponent,
+    NotifyComponent,
   ],
   imports: [
     BrowserModule,
     HttpClientModule, 
+    BrowserAnimationsModule,
+    MatSnackBarModule,
     RouterModule.forRoot(
       routes,
       {
@@ -141,6 +148,7 @@ const routes: Routes = [
     AuthService,
     CustomPreloadingStrategy,
     RxjsService,
+    NotifyService,
   ],
   bootstrap: [
     AppComponent,

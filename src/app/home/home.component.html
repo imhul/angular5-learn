@@ -1,6 +1,10 @@
-<p (click)="changeColor(blue)" [style.color]="class">{{ x }}</p>
+<div class="flex">
+    <input type="text" #colorElement>
 
-<input type="text" #colorElement>
-
-<button (click)="changeColor(colorElement.value)">change color</button>
+    <p (click)="changeColor(blue)" [style.color]="class">{{ x }}</p>
+    
+    <button (click)="changeColor(colorElement.value)">change color</button>
+    
+    <button (click)="newNum()">change number</button>
+</div>
 

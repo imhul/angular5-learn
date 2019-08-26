@@ -14,6 +14,6 @@ export class AppComponent {
     _http.get('https://jsonplaceholder.typicode.com/users')
     .subscribe(res => {
       // console.info("_http.get -> result: ", res)
-    })
+    });
   }
 }
