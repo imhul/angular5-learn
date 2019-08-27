@@ -14,7 +14,6 @@ import { NotifyService } from '../services/notify/notify.service';
 export class NotifyComponent implements OnDestroy {
 
     public subscription: Subscription;
-    public tip: any;
   
     constructor(private notify: NotifyService, private snack: MatSnackBar) {
       this.subscription = this.notify.getMessage().subscribe((message: string) => {
@@ -23,13 +22,13 @@ export class NotifyComponent implements OnDestroy {
     }
 
     openSnackBar(message: string, action: string) {
-      this.tip = this.snack.open(message, action, {
+      this.snack.open(message, action, {
         duration: 3000,
       })
     }
   
     ngOnDestroy() {
-      this.tip.dismiss();
+      this.notify.destroy();
       this.subscription.unsubscribe();
     }
   }

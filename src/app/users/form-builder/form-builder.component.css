@@ -1,0 +1,27 @@
+form {
+    width: 50%;
+    margin: 0 auto;
+}
+
+form ul {
+    width: 100%;
+}
+
+form ul > li {
+    list-style-type: none;
+    border: 1px solid rgb(213, 213, 213);
+    border-radius: 4px;
+    display: flex;
+    margin-bottom: 15px;
+    width: 100%;
+    padding: 15px 0;
+    justify-content: space-evenly;
+}
+
+form ul > li > * {
+    display: inline-block;
+}
+
+form .bottom {
+    width: 100%;
+}

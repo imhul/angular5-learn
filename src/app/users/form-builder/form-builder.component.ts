@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup, FormArray, FormBuilder } from '@angular/forms';
+import { NotifyService } from '../../services/notify/notify.service';
 
 @Component({
   selector: 'app-form-builder',
@@ -10,7 +11,9 @@ export class FormBuilderComponent implements OnInit {
 
   public userListControl: FormGroup;
 
-  constructor(private formBuilder: FormBuilder) { }
+  constructor(
+    private formBuilder: FormBuilder, 
+    private notify: NotifyService) { }
 
   ngOnInit() {
     this.userListControl = this.formBuilder.group({
@@ -22,14 +25,15 @@ export class FormBuilderComponent implements OnInit {
       ])
     });
     this.userListControl.valueChanges.subscribe(val => {
-      // this.name = val.firstName
-      console.info("userListControl.valueChanges: val: ", val)
+      console.info("userListControl.valueChanges > val: ", val);
     });
+    this.sendMessage('User list by FormBuilder is loaded!')
   }
 
   removeUserControl(index: any) {
     (this.userListControl.controls['users'] as FormArray).
-      removeAt(index)
+      removeAt(index);
+      this.sendMessage(`User with index ${index} is removed!`)
   }
 
   addUserControl() {
@@ -38,7 +42,16 @@ export class FormBuilderComponent implements OnInit {
         .controls.length;
 
     (this.userListControl.controls['users'] as FormArray).
-      push(new FormControl(`user ${formArrayLength + 1}`))
+      push(new FormControl(`user ${formArrayLength + 1}`));
+      this.sendMessage(`User ${formArrayLength + 1} is added!`)
+  }
+
+  sendMessage(text: string): void {
+    this.notify.send(text);
+  }
+
+  ngOnDestroy() {
+    this.notify.destroy();
   }
 
 }

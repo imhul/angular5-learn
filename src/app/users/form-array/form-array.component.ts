@@ -12,7 +12,8 @@ export class FormArrayComponent implements OnInit {
   public userListControl: FormGroup;
   public customControl: FormControl;
 
-  constructor(private notify: NotifyService) { }
+  constructor(
+    private notify: NotifyService) { }
 
   ngOnInit() {
     this.userListControl = new FormGroup({
@@ -24,20 +25,16 @@ export class FormArrayComponent implements OnInit {
       ])
     });
     this.userListControl.valueChanges.subscribe(val => {
-      console.info("userListControl.valueChanges: val: ", val)
+      console.info("userListControl.valueChanges > val: ", val);
     });
     this.customControl = new FormControl();
     this.sendMessage('User list by FormArray is loaded!')
   }
 
-  sendMessage(text: string): void {
-    this.notify.send(text);
-  }
-
   removeUserControl(index: any) {
     (this.userListControl.controls['users'] as FormArray).
       removeAt(index);
-      this.sendMessage('User is removed!')
+      this.sendMessage(`User with index ${index} is removed!`)
   }
 
   addUserControl() {
@@ -48,6 +45,14 @@ export class FormArrayComponent implements OnInit {
     (this.userListControl.controls['users'] as FormArray).
       push(new FormControl(`user ${formArrayLength + 1}`));
       this.sendMessage(`User ${formArrayLength + 1} is added!`)
+  }
+
+  sendMessage(text: string): void {
+    this.notify.send(text);
+  }
+
+  ngOnDestroy() {
+    this.notify.destroy();
   }
 
 }

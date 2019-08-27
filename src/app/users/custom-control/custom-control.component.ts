@@ -1,4 +1,4 @@
-import { Component, forwardRef } from '@angular/core';
+import { Component, forwardRef, OnDestroy } from '@angular/core';
 import { ControlValueAccessor, NG_VALUE_ACCESSOR } from '@angular/forms';
 import { NotifyService } from '../../services/notify/notify.service';
 
@@ -22,6 +22,10 @@ export class CustomControlComponent implements ControlValueAccessor {
     public propagateTouch = (color: cColor) => {};
 
     constructor(private notify: NotifyService) { }
+
+    ngOnInit() {
+      this.sendMessage("Custom Control component is loaded!")
+    }
 
     writeValue(color: cColor): void {
       this.currentColor = color
@@ -66,6 +70,10 @@ export class CustomControlComponent implements ControlValueAccessor {
 
     sendMessage(text: string): void {
       this.notify.send(text);
+    }
+
+    ngOnDestroy() {
+      this.notify.destroy();
     }
 }
   
