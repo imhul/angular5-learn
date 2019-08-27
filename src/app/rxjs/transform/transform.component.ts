@@ -35,11 +35,11 @@ export class TransformComponent implements OnInit {
   constructor() { }
 
   ngOnInit() {
-    this.observe.subscribe({
-      next: (next: any) => console.info("transform: next: ", next),
-      complete: () => console.info("transform: Complete!"),
-      error: (error: any) => console.info("transform: error: ", error),
-    });
+    // this.observe.subscribe({
+    //   next: (next: any) => console.info("transform: next: ", next),
+    //   complete: () => console.info("transform: Complete!"),
+    //   error: (error: any) => console.info("transform: error: ", error),
+    // });
   }
 
 }
