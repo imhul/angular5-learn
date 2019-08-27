@@ -20,7 +20,7 @@ export class HomeComponent implements OnDestroy {
 
   changeColor(color: string) {
     this.class = color;
-    this.sendMessage(`New color is ${color !== '' ? color : "[EMPTY!]"}`)
+    this.sendMessage(`New color is ${color !== '' ? color : "EMPTY!"}`)
   }
 
   newNum() {
@@ -31,7 +31,6 @@ export class HomeComponent implements OnDestroy {
   sendMessage(text: string): void {
     this.notify.send(text);
   }
-
 
   ngOnDestroy() {
     this.notify.destroy();

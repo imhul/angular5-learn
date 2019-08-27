@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup, FormArray } from '@angular/forms';
+import { NotifyService } from '../../services/notify/notify.service';
 
 @Component({
   selector: 'app-form-array',
@@ -11,7 +12,7 @@ export class FormArrayComponent implements OnInit {
   public userListControl: FormGroup;
   public customControl: FormControl;
 
-  constructor() { }
+  constructor(private notify: NotifyService) { }
 
   ngOnInit() {
     this.userListControl = new FormGroup({
@@ -26,11 +27,17 @@ export class FormArrayComponent implements OnInit {
       console.info("userListControl.valueChanges: val: ", val)
     });
     this.customControl = new FormControl();
+    this.sendMessage('User list by FormArray is loaded!')
+  }
+
+  sendMessage(text: string): void {
+    this.notify.send(text);
   }
 
   removeUserControl(index: any) {
     (this.userListControl.controls['users'] as FormArray).
-      removeAt(index)
+      removeAt(index);
+      this.sendMessage('User is removed!')
   }
 
   addUserControl() {
@@ -39,7 +46,8 @@ export class FormArrayComponent implements OnInit {
         .controls.length;
 
     (this.userListControl.controls['users'] as FormArray).
-      push(new FormControl(`user ${formArrayLength + 1}`))
+      push(new FormControl(`user ${formArrayLength + 1}`));
+      this.sendMessage(`User ${formArrayLength + 1} is added!`)
   }
 
 }

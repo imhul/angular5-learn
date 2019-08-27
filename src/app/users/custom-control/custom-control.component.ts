@@ -1,5 +1,6 @@
 import { Component, forwardRef } from '@angular/core';
 import { ControlValueAccessor, NG_VALUE_ACCESSOR } from '@angular/forms';
+import { NotifyService } from '../../services/notify/notify.service';
 
 type cColor = 'red' | 'yellow' | 'green';
 
@@ -19,6 +20,8 @@ export class CustomControlComponent implements ControlValueAccessor {
     private _colors: cColor[] = ['red', 'yellow', 'green'];
     public propagateChange = (color: cColor) => {};
     public propagateTouch = (color: cColor) => {};
+
+    constructor(private notify: NotifyService) { }
 
     writeValue(color: cColor): void {
       this.currentColor = color
@@ -43,20 +46,27 @@ export class CustomControlComponent implements ControlValueAccessor {
     };
 
     switchColor(color: cColor) {
-      this.currentColor = color
+      this.currentColor = color;
+      this.sendMessage(`Current color is ${this.currentColor}`)
     };
 
     toggleDown() {
       this.currentColor = this._colors[(
           this._colors.indexOf(this.currentColor) + 1
-      ) % 3]
+      ) % 3];
+      this.sendMessage(`Color is toggled down!`)
     };
 
     toggleUp() {
       this.currentColor = this._colors[(
           this._colors.indexOf(this.currentColor) + 2
-      ) % 3]
+      ) % 3];
+      this.sendMessage(`Color is toggled up!`)
     };
+
+    sendMessage(text: string): void {
+      this.notify.send(text);
+    }
 }
   
   

@@ -4,7 +4,7 @@
         (click)="addUser(userNameElement.value); userNameElement.value = ''">
         add new user
     </button>
-    <button (click)="isShown = !isShown">show tools</button>
+    <button (click)="isShown = !isShown; sendMessage(isShown ? 'Tools is shown' : 'Tools is hide')">toggle tools</button>
     <p></p>
     <input type="checkbox" #userListChoise (click)="userListChoise.checked ? getFromServer() : getStaticList()">
     <span> {{ userListChoise.checked ? "list from server loaded" : "static list loaded" }} </span>

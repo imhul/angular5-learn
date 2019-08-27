@@ -58,7 +58,7 @@ export class UsersComponent implements OnInit {
 
   addUser(name: string) {
     if(!name) {
-      this.sendMessage("Name is empty!");
+      this.sendMessage("Name is EMPTY!");
       return
     };
     this._userService.addNew(name);

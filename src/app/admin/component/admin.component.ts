@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { NotifyService } from '../../services/notify/notify.service';
 
 @Component({
   selector: 'app-admin',
@@ -7,9 +8,18 @@ import { Component, OnInit } from '@angular/core';
 })
 export class AdminComponent implements OnInit {
 
-  constructor() { }
+  constructor(private notify: NotifyService) { }
 
   ngOnInit() {
+    this.sendMessage("Admin component is loaded!")
+  }
+
+  sendMessage(text: string): void {
+    this.notify.send(text);
+  }
+
+  ngOnDestroy() {
+    this.notify.destroy();
   }
 
 }
