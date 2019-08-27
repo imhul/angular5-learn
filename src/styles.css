@@ -57,10 +57,14 @@ ul > li {
     list-style-type: none;
 }
 
+a, a:href {
+    text-decoration: none;
+}
+
 .center {
     text-align: center !important;
 }
 
 .cdk-global-overlay-wrapper {
     align-items: flex-start !important;
-  }
+}

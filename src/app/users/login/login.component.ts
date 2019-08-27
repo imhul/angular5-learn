@@ -18,11 +18,13 @@ export class LoginComponent implements OnInit {
   }
 
   close() {
-    this._router.navigate([
-      ".", 
-      { outlets: { popup: null } }
-    ]);
-    this.sendMessage("Login popup is closed!")
+    this.sendMessage("Login popup is closed!");
+    setTimeout(() => {
+      this._router.navigate([
+        ".", 
+        { outlets: { popup: null } }
+      ]);
+    }, 1000)
   }
 
   sendMessage(text: string): void {
