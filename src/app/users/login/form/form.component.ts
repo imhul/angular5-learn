@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators, ValidationErrors } from '@angular/forms';
 import { FormValidators } from './form.validators';
 import { Router } from '@angular/router';
+import { NotifyService } from '../../../services/notify/notify.service';
 
 @Component({
   selector: 'app-form',
@@ -18,10 +19,12 @@ export class FormComponent implements OnInit {
   public passStatus: string;
   public isValid: boolean = false;
   public isSubmitted: boolean = false;
-  public payLoad: string;
-  public submitObj: {} = {};
+  public payLoad: any;
+  public submitObj: any;
 
-  constructor(private _router: Router) { }
+  constructor(
+    private _router: Router,
+    private notify: NotifyService) { }
 
   ngOnInit() {
 
@@ -57,13 +60,16 @@ export class FormComponent implements OnInit {
   }
 
   formValidation() {
-    return this.isValid = FormValidators.preSubmitValidator(this.FormGroupStatus, this.passStatus)
+    this.isValid = FormValidators.preSubmitValidator(this.FormGroupStatus, this.passStatus);
+    if(this.isValid) {
+      this.sendMessage("Form is valid!");
+    } else this.sendMessage("Form is invalid!");
+    return this.isValid
   }
 
   submit(data: {}) {
     this.payLoad = JSON.stringify(data);
-    console.info("submit payLoad: ", this.payLoad);
-    this.isSubmitted = true;
+    this.isSubmitted = true
   }
 
   onSubmit() {
@@ -72,10 +78,22 @@ export class FormComponent implements OnInit {
       name: this.fullNameControl.value,
     };
     this.submit(this.submitObj);
-    if(this.isSubmitted) this._router.navigate([
-      ".", 
-      { outlets: { popup: null } }
-    ]);
-    
+    if(this.isSubmitted) {
+      this.sendMessage(`Form submitted! Hello, ${this.submitObj.name.firstName}`);
+      setTimeout(() => {
+        this._router.navigate([
+          ".", 
+          { outlets: { popup: null } }
+        ])
+      }, 2000)
+    } else this.sendMessage(`Submit error!`);
+  }
+
+  sendMessage(text: string): void {
+    this.notify.send(text);
+  }
+
+  ngOnDestroy() {
+    this.notify.destroy();
   }
 }
